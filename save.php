@@ -4,8 +4,8 @@ header("Access-Control-Allow-Origin: *");
 
 if(isset($_POST)){
       
-
-	$myfile = fopen('experiment.txt', 'a');
+	$id = $_POST['hitid'];
+	$myfile = fopen(strval($id) . '.txt', 'a');
 	
         if (false === $myfile) {
 		print "FOPEN NOT WORKING<br>";
