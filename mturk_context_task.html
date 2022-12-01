@@ -747,6 +747,7 @@ import{getDatabase, ref, set, child, update, remove, get,increment} from "https:
                         const startTime = new Date().getTime();
                         var timeStamp = 0;
                         let allLogs = "";
+	 		let errLog = "";
                         allLogs = allLogs.concat(JSON.stringify(startTime));
                         document.getElementById("boxone_full").addEventListener('click', function(){
                                 var currTime = new Date().getTime();
@@ -755,9 +756,13 @@ import{getDatabase, ref, set, child, update, remove, get,increment} from "https:
                                 var y = window.scrollY + document.getElementById("boxone_full").getBoundingClientRect().top;
                                 var dataToServer = formatData("Box One Checked", timeStamp, x, y);
                                 allLogs = allLogs.concat(JSON.stringify(dataToServer));
-                                $.post("https://odin.cis.temple.edu/hotels8k/extra/mturk.php",
-                                        dataToServer
-                                );
+                                try{
+                                    	$.post("https://odin.cis.temple.edu/hotels8k/extra/mturk.php?hitid=" + String(GetAssignmentId()),
+                                        	dataToServer
+                                    	);
+				}catch(err){
+					 errLog = errLog.concat("Jquery post failed @" + String(timeStamp));
+				}
                             });
                         document.getElementById("boxtwo_full").addEventListener('click', function(){
                                 var currTime = new Date().getTime();
@@ -766,9 +771,13 @@ import{getDatabase, ref, set, child, update, remove, get,increment} from "https:
                                 var y = window.scrollY + document.getElementById("boxtwo_full").getBoundingClientRect().top;
                                 var dataToServer = formatData("Box Two Checked", timeStamp, x, y);
                                 allLogs = allLogs.concat(JSON.stringify(dataToServer));
-                                $.post("https://odin.cis.temple.edu/hotels8k/extra/mturk.php",
-                                        dataToServer
-                                );
+                                try{
+                                    	$.post("https://odin.cis.temple.edu/hotels8k/extra/mturk.php?hitid=" + String(GetAssignmentId()),
+                                        	dataToServer
+                                    	);
+				}catch(err){
+					 errLog = errLog.concat("Jquery post failed @" + String(timeStamp));
+				}
                         });
                         document.getElementById("boxthree_full").addEventListener('click', function(){
                                 var currTime = new Date().getTime();
@@ -777,9 +786,13 @@ import{getDatabase, ref, set, child, update, remove, get,increment} from "https:
                                 var y = window.scrollY + document.getElementById("boxthree_full").getBoundingClientRect().top;
                                 var dataToServer = formatData("Box Three Checked", timeStamp, x, y);
                                 allLogs = allLogs.concat(JSON.stringify(dataToServer));
-                                $.post("https://odin.cis.temple.edu/hotels8k/extra/mturk.php",
-                                        dataToServer
-                                );
+                                try{
+                                    	$.post("https://odin.cis.temple.edu/hotels8k/extra/mturk.php?hitid=" + String(GetAssignmentId()),
+                                        	dataToServer
+                                    	);
+				}catch(err){
+					 errLog = errLog.concat("Jquery post failed @" + String(timeStamp));
+				}
                         });
                         document.getElementById("boxfour_full").addEventListener('click', function(){
                                 var currTime = new Date().getTime();
@@ -788,9 +801,13 @@ import{getDatabase, ref, set, child, update, remove, get,increment} from "https:
                                 var y = window.scrollY + document.getElementById("boxfour_full").getBoundingClientRect().top;
                                 var dataToServer = formatData("Box Four Checked", timeStamp, x, y);
                                 allLogs = allLogs.concat(JSON.stringify(dataToServer));
-                                $.post("https://odin.cis.temple.edu/hotels8k/extra/mturk.php",
-                                        dataToServer
-                                );
+                                try{
+                                    	$.post("https://odin.cis.temple.edu/hotels8k/extra/mturk.php?hitid=" + String(GetAssignmentId()),
+                                        	dataToServer
+                                    	);
+				}catch(err){
+					 errLog = errLog.concat("Jquery post failed @" + String(timeStamp));
+				}
                         });
                         
                         //crop 
@@ -801,9 +818,13 @@ import{getDatabase, ref, set, child, update, remove, get,increment} from "https:
                                 var y = window.scrollY + document.getElementById("boxone_crop").getBoundingClientRect().top;
                                 var dataToServer = formatData("Box One Checked", timeStamp, x, y);
                                 allLogs = allLogs.concat(JSON.stringify(dataToServer));
-                                $.post("https://odin.cis.temple.edu/hotels8k/extra/mturk.php",
-                                        dataToServer
-                                );
+                                try{
+                                    	$.post("https://odin.cis.temple.edu/hotels8k/extra/mturk.php?hitid=" + String(GetAssignmentId()),
+                                        	dataToServer
+                                    	);
+				}catch(err){
+					 errLog = errLog.concat("Jquery post failed @" + String(timeStamp));
+				}
                             });
                         document.getElementById("boxtwo_crop").addEventListener('click', function(){
                                 var currTime = new Date().getTime();
@@ -812,9 +833,13 @@ import{getDatabase, ref, set, child, update, remove, get,increment} from "https:
                                 var y = window.scrollY + document.getElementById("boxtwo_crop").getBoundingClientRect().top;
                                 var dataToServer = formatData("Box Two Checked", timeStamp, x, y);
                                 allLogs = allLogs.concat(JSON.stringify(dataToServer));
-                                $.post("https://odin.cis.temple.edu/hotels8k/extra/mturk.php",
-                                        dataToServer
-                                );
+                                try{
+                                    	$.post("https://odin.cis.temple.edu/hotels8k/extra/mturk.php?hitid=" + String(GetAssignmentId()),
+                                        	dataToServer
+                                    	);
+				}catch(err){
+					 errLog = errLog.concat("Jquery post failed @" + String(timeStamp));
+				}
                         });
                         document.getElementById("boxthree_crop").addEventListener('click', function(){
                                 var currTime = new Date().getTime();
@@ -823,9 +848,13 @@ import{getDatabase, ref, set, child, update, remove, get,increment} from "https:
                                 var y = window.scrollY + document.getElementById("boxthree_crop").getBoundingClientRect().top;
                                 var dataToServer = formatData("Box Three Checked", timeStamp, x, y);
                                 allLogs = allLogs.concat(JSON.stringify(dataToServer));
-                                $.post("https://odin.cis.temple.edu/hotels8k/extra/mturk.php",
-                                        dataToServer
-                                );
+                                try{
+                                    	$.post("https://odin.cis.temple.edu/hotels8k/extra/mturk.php?hitid=" + String(GetAssignmentId()),
+                                        	dataToServer
+                                    	);
+				 }catch(err){
+					 errLog = errLog.concat("Jquery post failed @" + String(timeStamp));
+				 }
                         });
                         document.getElementById("boxfour_crop").addEventListener('click', function(){
                                 var currTime = new Date().getTime();
@@ -834,9 +863,13 @@ import{getDatabase, ref, set, child, update, remove, get,increment} from "https:
                                 var y = window.scrollY + document.getElementById("boxfour_crop").getBoundingClientRect().top;
                                 var dataToServer = formatData("Box Four Checked", timeStamp, x, y);
                                 allLogs = allLogs.concat(JSON.stringify(dataToServer));
-                                $.post("https://odin.cis.temple.edu/hotels8k/extra/mturk.php",
-                                        dataToServer
-                                );
+                                try{
+                                    	$.post("https://odin.cis.temple.edu/hotels8k/extra/mturk.php?hitid=" + String(GetAssignmentId()),
+                                        	dataToServer
+                                    	);
+				}catch(err){
+					 errLog = errLog.concat("Jquery post failed @" + String(timeStamp));
+				}
                         });
                         
                         
@@ -850,9 +883,13 @@ import{getDatabase, ref, set, child, update, remove, get,increment} from "https:
                                 var y = window.scrollY + document.getElementById("show_inst_full").getBoundingClientRect().top;
                                 var dataToServer = formatData("instructions_full Checked", timeStamp, x, y);
                                 allLogs = allLogs.concat(JSON.stringify(dataToServer));
-                                $.post("https://odin.cis.temple.edu/hotels8k/extra/mturk.php",
-                                        dataToServer
-                                );
+                                try{
+                                    	$.post("https://odin.cis.temple.edu/hotels8k/extra/mturk.php?hitid=" + String(GetAssignmentId()),
+                                        	dataToServer
+                                    	);
+				}catch(err){
+					 errLog = errLog.concat("Jquery post failed @" + String(timeStamp));
+				}
                         });
                         
                          document.getElementById("show_inst_cropped").addEventListener('click', function(){
@@ -862,9 +899,13 @@ import{getDatabase, ref, set, child, update, remove, get,increment} from "https:
                                 var y = window.scrollY + document.getElementById("show_inst_cropped").getBoundingClientRect().top;
                                 var dataToServer = formatData("instructions_crop Checked", timeStamp, x, y);
                                 allLogs = allLogs.concat(JSON.stringify(dataToServer));
-                                $.post("https://odin.cis.temple.edu/hotels8k/extra/mturk.php",
-                                        dataToServer
-                                );
+                                try{
+                                    	$.post("https://odin.cis.temple.edu/hotels8k/extra/mturk.php?hitid=" + String(GetAssignmentId()),
+                                        	dataToServer
+                                    	);
+				}catch(err){
+					 errLog = errLog.concat("Jquery post failed @" + String(timeStamp));
+				}
                         });
                         
                         document.getElementById("show_inst_highlight").addEventListener('click', function(){
@@ -874,9 +915,13 @@ import{getDatabase, ref, set, child, update, remove, get,increment} from "https:
                                 var y = window.scrollY + document.getElementById("show_inst_highlight").getBoundingClientRect().top;
                                 var dataToServer = formatData("instructions_highlight Checked", timeStamp, x, y);
                                 allLogs = allLogs.concat(JSON.stringify(dataToServer));
-                                $.post("https://odin.cis.temple.edu/hotels8k/extra/mturk.php",
-                                        dataToServer
-                                );
+                                try{
+                                    	$.post("https://odin.cis.temple.edu/hotels8k/extra/mturk.php?hitid=" + String(GetAssignmentId()),
+                                        	dataToServer
+                                    	);
+				}catch(err){
+					 errLog = errLog.concat("Jquery post failed @" + String(timeStamp));
+				}
                         });
                         
                         //main 
@@ -888,9 +933,13 @@ import{getDatabase, ref, set, child, update, remove, get,increment} from "https:
                                 var y = window.scrollY + document.getElementById("show_main_full").getBoundingClientRect().top;
                                 var dataToServer = formatData("main_full Checked", timeStamp, x, y);
                                 allLogs = allLogs.concat(JSON.stringify(dataToServer));
-                                $.post("https://odin.cis.temple.edu/hotels8k/extra/mturk.php",
-                                        dataToServer
-                                );
+                                try{
+                                    	$.post("https://odin.cis.temple.edu/hotels8k/extra/mturk.php?hitid=" + String(GetAssignmentId()),
+                                        	dataToServer
+                                    	);
+				}catch(err){
+					 errLog = errLog.concat("Jquery post failed @" + String(timeStamp));
+				}
                         });
                         
                         document.getElementById("show_main_cropped").addEventListener('click', function(){
@@ -900,9 +949,13 @@ import{getDatabase, ref, set, child, update, remove, get,increment} from "https:
                                 var y = window.scrollY + document.getElementById("show_main_cropped").getBoundingClientRect().top;
                                 var dataToServer = formatData("main_cropped Checked", timeStamp, x, y);
                                 allLogs = allLogs.concat(JSON.stringify(dataToServer));
-                                $.post("https://odin.cis.temple.edu/hotels8k/extra/mturk.php",
-                                        dataToServer
-                                );
+                                try{
+                                    	$.post("https://odin.cis.temple.edu/hotels8k/extra/mturk.php?hitid=" + String(GetAssignmentId()),
+                                        	dataToServer
+                                    	);
+				 }catch(err){
+					 errLog = errLog.concat("Jquery post failed @" + String(timeStamp));
+				 }
                         });
                         
                         document.getElementById("show_main_highlight").addEventListener('click', function(){
@@ -912,9 +965,13 @@ import{getDatabase, ref, set, child, update, remove, get,increment} from "https:
                                 var y = window.scrollY + document.getElementById("show_main_highlight").getBoundingClientRect().top;
                                 var dataToServer = formatData("main_highlight Checked", timeStamp, x, y);
                                 allLogs = allLogs.concat(JSON.stringify(dataToServer));
-                                $.post("https://odin.cis.temple.edu/hotels8k/extra/mturk.php",
-                                        dataToServer
-                                );
+                                try{
+                                    	$.post("https://odin.cis.temple.edu/hotels8k/extra/mturk.php?hitid=" + String(GetAssignmentId()),
+                                        	dataToServer
+                                    	);
+				}catch(err){
+					 errLog = errLog.concat("Jquery post failed @" + String(timeStamp));
+				}
                         });
                         
                         document.getElementById("show_main_padded").addEventListener('click', function(){
@@ -924,9 +981,13 @@ import{getDatabase, ref, set, child, update, remove, get,increment} from "https:
                                 var y = window.scrollY + document.getElementById("show_main_padded").getBoundingClientRect().top;
                                 var dataToServer = formatData("main_padded Checked", timeStamp, x, y);
                                 allLogs = allLogs.concat(JSON.stringify(dataToServer));
-                                $.post("https://odin.cis.temple.edu/hotels8k/extra/mturk.php",
-                                        dataToServer
-                                );
+                                try{
+                                    	$.post("https://odin.cis.temple.edu/hotels8k/extra/mturk.php?hitid=" + String(GetAssignmentId()),
+                                        	dataToServer
+                                    	);
+				}catch(err){
+					 errLog = errLog.concat("Jquery post failed @" + String(timeStamp));
+				}
                         });
                         
                         
@@ -956,9 +1017,13 @@ import{getDatabase, ref, set, child, update, remove, get,increment} from "https:
                                     }
                                     var dataToServer = formatData("mousemove", timeStamp, event.pageX, event.pageY);
                                     //allLogs = allLogs.concat(JSON.stringify(dataToServer));
-                                    $.post("https://odin.cis.temple.edu/hotels8k/extra/mturk.php",
-                                            dataToServer
-                                    );
+                                    try{
+                                    	$.post("https://odin.cis.temple.edu/hotels8k/extra/mturk.php?hitid=" + String(GetAssignmentId()),
+                                        	dataToServer
+                                    	);
+				    }catch(err){
+					 errLog = errLog.concat("Jquery post failed @" + String(timeStamp));
+				    }
                                 }
                              })();
                             document.addEventListener("visibilitychange", function() {
@@ -973,18 +1038,26 @@ import{getDatabase, ref, set, child, update, remove, get,increment} from "https:
                                 }
                                 var dataToServer = formatData(type, timeStamp, "N/A", "N/A")
                               //  allLogs = allLogs.concat(JSON.stringify(dataToServer));
-                                $.post("https://odin.cis.temple.edu/hotels8k/extra/mturk.php",
-                                        dataToServer
-                                );
+                                try{
+                                    	$.post("https://odin.cis.temple.edu/hotels8k/extra/mturk.php?hitid=" + String(GetAssignmentId()),
+                                        	dataToServer
+                                    	);
+				 }catch(err){
+					 errLog = errLog.concat(" Jquery post failed @" + String(timeStamp));
+				 }
                             });
                             document.querySelector('crowd-form').addEventListener('submit', function(){
                                 var currTime = new Date().getTime();
                                 timeStamp = currTime - startTime;
                                 var dataToServer = formatData("submit clicked", timeStamp, "N/A", "N/A")
                                  allLogs = allLogs.concat(JSON.stringify(dataToServer));
-                                $.post("https://odin.cis.temple.edu/hotels8k/extra/mturk.php",
-                                        dataToServer
-                                );
+                                try{
+                                    	$.post("https://odin.cis.temple.edu/hotels8k/extra/mturk.php?hitid=" + String(GetAssignmentId()),
+                                        	dataToServer
+                                    	);
+				}catch(err){
+					 errLog = errLog.concat(" Jquery post failed @" + String(timeStamp));
+				}
                             });
                            
                             document.querySelector('crowd-form').onsubmit = function() {
@@ -994,9 +1067,13 @@ import{getDatabase, ref, set, child, update, remove, get,increment} from "https:
                                     document.getElementById("log").value = allLogs
                                     var dataToServer = formatData("submit", timeStamp, "N/A", "N/A")
                                     allLogs = allLogs.concat(JSON.stringify(dataToServer));
-                                    $.post("https://odin.cis.temple.edu/hotels8k/extra/mturk.php",
-                                        dataToServer
-                                    );
+				    try{
+                                    	$.post("https://odin.cis.temple.edu/hotels8k/extra/mturk.php?hitid=" + String(GetAssignmentId()),
+                                        	dataToServer
+                                    	);
+				    }catch(err){
+					 errLog = errLog.concat(" Jquery post failed @" + String(timeStamp));
+				    }
                                 }; 
                                 
                          function formatData(event, timestamp, x, y){
