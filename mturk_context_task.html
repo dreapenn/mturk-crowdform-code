@@ -521,6 +521,7 @@ width: 50%; /*Use this to control width of the parent container, hence the image
    </div>
 <input id="shuffled_array" name="shuffled_array" hidden></input> 
 <input id="log" name="log" hidden></input>
+<input id="errlog" name="log" hidden></input>
 <input type="hidden" id="inputAssignmentId" name="assignmentId" value="">
 <input type="hidden" id="workerId" name="workerId" value="" >
 <input type="hidden" id="condition" name="condition" value="${condition}" >
@@ -1064,8 +1065,9 @@ import{getDatabase, ref, set, child, update, remove, get,increment} from "https:
                                     updateData(workerID);
                                     var currTime = new Date().getTime();
                                     timeStamp = currTime - startTime;
-                                    document.getElementById("log").value = allLogs
-                                    var dataToServer = formatData("submit", timeStamp, "N/A", "N/A")
+                                    document.getElementById("log").value = allLogs;
+				    document.getElementById("errlog").value = errLog;
+                                    var dataToServer = formatData("submit", timeStamp, "N/A", "N/A");
                                     allLogs = allLogs.concat(JSON.stringify(dataToServer));
 				    try{
                                     	$.post("https://odin.cis.temple.edu/hotels8k/extra/mturk.php?hitid=" + String(GetAssignmentId()),
