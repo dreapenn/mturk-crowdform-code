@@ -1,0 +1,449 @@
+<head>
+<script src="https://assets.crowd.aws/crowd-html-elements.js"></script><!-- jquery -->
+<meta charset="utf-8" />
+<meta content="width=device-width, initial-scale=1" name="viewport" />
+
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="nofollow" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm” crossorigin=”anonymous">
+<!-- You must include this JavaScript file -->
+<script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
+
+<style>
+.grid {
+   max-height: 150px;
+ max-width: 400px;
+ width:350px;
+ height:150px;
+}
+.container {
+  position: relative;
+  border: 3px solid black;
+}
+
+img.stretchy {
+/*width:100px;*/
+height: 150px;
+}
+.container1 {
+width: 50%; /*Use this to control width of the parent container, hence the image*/
+
+}
+.close {
+  font-size: 45px;
+  font-weight: 600;
+}
+
+.msg {
+    color: blue;
+    font-size: 45px;
+  font-weight: 600;
+  text-align: center;
+    
+    
+}
+
+
+</style>
+</head>
+
+<!--------------------------------------------------------------------------------------------->
+<body>
+<!-- You must include crowd-form so that your task submits answers to MTurk -->
+<crowd-form>
+<!-- Example Section------------->
+<div id="example" style='display:block'>
+ <div class="container-fluid">
+        <h2>Age Comparison <b>Example</b> Task</h2>
+        <h3>Click on the subject that appears <b>older</b>.</h3>
+
+          <!-- Target Images 2x3 grid -->
+
+        <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
+        <div class="well well-md">
+        <h3>Target Images</h3>
+         <div class="row">
+        <!-- (0,0) (1, 0)-->
+        <table style="border-spacing: 30px; border-collapse: separate;">
+        <tr>
+        <td>
+        <div class="container1"><img class="stretchy" id="target1" style="border: 4px dotted blue" src="https://cis-linux2.temple.edu/~tun94111/turk/scenicex/notscenic0.jpg" alt="Could not load target image 0,0"/>Subject 1</div>
+         </td>
+         <td>
+         <div class="container1"><img class="stretchy" id="target2" src="https://cis-linux2.temple.edu/~tun94111/turk/scenicex/examp0.jpeg" alt="Could not load target image 1,0"/>Subject 2</div>
+         </td>
+         <td><p>Subject 1 has been selected as older. It is highlighted in blue. Subject 1 has been selected as older due to the <b>characteristics</b> of the face.</p></td>
+       </tr>
+    
+      </table>
+       </div>
+                 <button type="button"  id="show_inst" style="text-align:center;">Next</button>
+        </div>
+        
+        </div>
+    </div>
+</div>
+<!--Training Task-------------------->    
+<div id="trainingForm" style='display:none'>
+    <div class="container-fluid">
+        <h2>Age Comparison <b>Example</b> Task</h2>
+        <h3>Click on the subject that appears <b>older</b>.</h3>
+
+          <!-- Target Images 2x3 grid -->
+
+        <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
+        <div class="well well-md">
+        <h3>Target Images</h3>
+         <div class="row">
+        <!-- (0,0) (1, 0)-->
+        <table style="border-spacing: 30px; border-collapse: separate;">
+        <tr>
+        <td>
+        <div class="container1"><img class="stretchy" id="target1" src="https://cis-linux2.temple.edu/~tun94111/turk/scenicex/notscenic0.jpg" alt="Could not load target image 0,0"/>Subject 1</div>
+         </td>
+         <td>
+         <div class="container1"><img class="stretchy" id="target2" style="border: 4px dotted blue" src="https://cis-linux2.temple.edu/~tun94111/turk/scenicex/examp0.jpeg" alt="Could not load target image 1,0"/>Subject 2</div>
+         </td>
+         <td><p>Subject 2 has been selected as the older image. It is highlighted in blue. Using the characteristics of each face, we can see that Subject 2 is <b>older.</b></p></td>
+       </tr>
+      </table>
+        </div>
+                 <button type="button"  id="show_att" style="text-align:center;">Next</button>
+        </div>
+        </div>
+    </div>
+    
+</div><!-- end training------------------------------------------->   
+<!--Hard-Coded Attention Checks-------------------->
+<div id="attentionForm" style='display:none'>
+    <div class="container-fluid">
+        <h2>Age Comparison Task</h2>
+        <h3>Click on the subject that appears <b>older</b>.</h3>
+
+          <!-- Target Images 2x3 grid -->
+
+        <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
+        <div class="well well-md">
+        <h3>Target Images</h3>
+         <div class="row">
+        <!-- (0,0) (1, 0)-->
+        <table style="border-spacing: 30px; border-collapse: separate;">
+        <tr>
+        <td>
+        <div class="container1"><img class="stretchy" id="targetex1" src="https://cis-linux2.temple.edu/~tun94111/turk/scenicex/examp1.jpg" alt="Could not load target image 0,0"/>Subject 1</div>
+        
+         </td>
+         <td>
+         <div class="container1"><img class="stretchy" id="targetex2" src="https://cis-linux2.temple.edu/~tun94111/turk/scenicex/notscenic1.jpeg" alt="Could not load target image 1,0"/>Subject 2</div>
+         </td>
+       </tr>
+      </table>
+       </div>
+                 <button type="button"  id="show_main" style="text-align:center;">Next</button>
+        </div>
+        </div>
+    </div>
+</div><!-- end attention check form ------------------------------------------->
+<!-- Main tasks------------------>
+<div id="mainForm"  style='display:none'>    
+    <crowd-instructions link-text="View instructions" link-type="button">
+    <short-summary>
+      <h3>Click on the subject that appears <b>older</b>.</h3>
+    </short-summary>
+    <detailed-instructions>
+      <h3>Further instructions</h3>
+      <p>Click on the image that appears <b>older</b>.</p>
+      <p>Use the characteristics of the images to decide which is older.</p>
+    </detailed-instructions>
+    <positive-example> 
+            <p>This is an example of a <b>correct</b> age comparison task.</p>
+		     <table style="border-spacing: 30px; border-collapse: separate;">
+                <tr>
+                <td>
+                    <div class="container1"><img class="stretchy" id="target1" src="https://cis-linux2.temple.edu/~tun94111/turk/scenicex/notscenic0.jpg" alt="Could not load target image 0,0"/>Subject 1</div>
+                 </td>
+                <td>
+                    <div class="container1"><img class="stretchy" id="target2" style="border: 4px dotted blue" src="https://cis-linux2.temple.edu/~tun94111/turk/scenicex/examp0.jpeg" alt="Could not load target image 1,0"/>Subject 2</div>
+                </td>
+                <td><p>Subject 2 has been selected as the older image. It is highlighted in blue. Using the characteristics of each face, we can see that Subject 2 is <b>older.</b></p></td>
+                </tr>
+            </table>
+	</positive-example>
+    <negative-example>
+		  <p>This is an example of an <b>incorrectly</b> done age comparison task.</p>
+		    <table style="border-spacing: 30px; border-collapse: separate;">
+                <tr>
+                <td>
+                    <div class="container1"><img class="stretchy" id="target1" style="border: 4px dotted blue" src="https://cis-linux2.temple.edu/~tun94111/turk/scenicex/notscenic0.jpg" alt="Could not load target image 0,0"/>Subject 1</div>
+                 </td>
+                <td>
+                    <div class="container1"><img class="stretchy" id="target2" src="https://cis-linux2.temple.edu/~tun94111/turk/scenicex/examp0.jpeg" alt="Could not load target image 1,0"/>Subject 2</div>
+                </td>
+                <td><p>Subject 1 has been selected as the older image. It is highlighted in blue. Using the characteristics of each face, we can see that <b>Subject 2</b> is <b>older. The selection is incorrect.</b></p></td>
+                </tr>
+            </table>
+	</negative-example>
+    </crowd-instructions>
+    <div class="container-fluid">
+        <h2>Age Comparison Task</h2>
+        <h3>Click on the subject that appears <b>older</b>.</h3>
+        <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
+        <div class="well well-md">
+        <h3>Target Images</h3>
+
+         <div class="row">
+        <!-- (0,0) (1, 0)-->
+         
+        <table style="border-spacing: 30px; border-collapse: separate;">
+        <tr>
+        <td>
+        <div class="container1"><img width="400px" height="300px" id="targetOne" src="https://cis-linux2.temple.edu/~tun94111/turk/scenicex/examp3.jpg" alt="Could not load target image 0,0"/>Subject 1</div>
+         </td>
+         <td>
+         <div class="container1"><img width="300px" height="300px" id="targetTwo" src="https://cis-linux2.temple.edu/~tun94111/turk/scenicex/notscenic3.jpg" alt="Could not load target image 1,0"/>Subject 2</div>
+         </td>
+       </tr>
+      </table>
+      </div>
+        </div>
+       </div>
+       </div>
+    <input id="log" name="Event log" hidden></input>
+    <input id="errlog" name="Error log" hidden></input>
+    <input id = "oneClicked" name = "Image 1" value = "" hidden></input>
+    <input id = "twoClicked" name = "Image 2"  value = "" hidden></input>
+    <input id = "taskTime" name = "Time to final click" hidden></input>
+    <input id = "hiddenTime" name = "Time task hidden" hidden></input>
+    <input id = "attention1" name = "Attention Img1" hidden></input>
+    <input id = "attention2" name = "Attention Img2" hidden></input>
+    <input type="hidden" id="inputAssignmentId" name="assignmentId" value="">
+    <input type="hidden" id="workerId" name="workerId" value="0" >
+    <div style="text-align:center;"><crowd-button form-action="submit" id="sub">Submit My Work</crowd-button></div>
+</div>
+
+</crowd-form>
+
+<!--------------------------------------------------------------------------------------------->
+<script src="https://code.jquery.com/jquery-3.1.0.min.js"  integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js" integrity="sha384-s1ITto93iSMDxlp/79qhWHi+LsIi9Gx6yL+cOKDuymvihkfol83TYbLbOw+W/wv4" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js" integrity="sha384-s1ITto93iSMDxlp/79qhWHi+LsIi9Gx6yL+cOKDuymvihkfol83TYbLbOw+W/wv4" crossorigin="anonymous"></script>
+<!--------------------------------------------------------------------------------------------->
+
+
+<!-------------------Regular functions---->
+<script>
+function GetWorkerId() {
+	var workerId = turkGetParam( 'workerId', 'NONE' );
+	return workerId;
+}
+
+function turkGetParam( name, defaultValue ) {
+   var regexS = "[\?&]"+name+"=([^&#]*)";
+   var regex = new RegExp( regexS );
+   var tmpURL = document.location.href;
+   var results = regex.exec( tmpURL );
+   if( results == null ) {
+     return defaultValue;
+   } else {
+     return results[1];
+   }
+}
+
+function GetAssignmentId() {
+	var assignmentId = turkGetParam('assignmentId', 'NONE' );
+	return assignmentId;
+}	
+function IsOnTurk() {
+  try {
+    return ((document.location.host.indexOf('mturk')!=-1) || document.forms["mturk_form"] ||
+      (top != self && window.parent.location.host.indexOf("mturk") != -1));
+  } catch(err) {
+    // insecure content trying to access https://turk probably, so say yes:
+    return true;
+  }
+}
+document.addEventListener("DOMContentLoaded", () => {
+        var startTime = new Date().getTime();
+        let startDate = new Date().toISOString();
+        var mainStarted = 0;
+        var timeStamp = 0;
+        let allLogs = "StartTime: ";
+        allLogs = allLogs.concat(startDate);
+        allLogs = allLogs.concat(", ");
+	 	let errLogs = "";
+        var oneVal = 0;
+        var twoVal = 0;
+        var oneEx = 0;
+        var twoEx = 0;
+        var timeHidden = 0;
+        var timeToDecide = 0;
+        var startHide = 0;
+        
+        var att1 = document.getElementById("attention1");
+        var att2 = document.getElementById("attention2");
+        
+                
+        
+        document.getElementById('show_main').addEventListener('click', function(){  
+            var myInst= document.getElementById('attentionForm')
+            myInst.style.display="none";
+            var myForm= document.getElementById('mainForm');
+            myForm.style.display="block";
+            mainStarted = 1;
+            
+        });
+        document.getElementById('show_inst').addEventListener('click', function(){ 
+            var myExample= document.getElementById('example');
+            myExample.style.display="none";
+            var myInst= document.getElementById('trainingForm');
+            myInst.style.display="block";
+        });
+        document.getElementById('show_att').addEventListener('click', function(){    
+            var myExample= document.getElementById('trainingForm');
+            myExample.style.display="none";
+            var myInst= document.getElementById('attentionForm');
+            myInst.style.display="block";   
+            
+        });
+                     
+         //Start logging 
+                        
+        $('#assignmentId').val(GetAssignmentId());
+        var curID = (IsOnTurk())? GetAssignmentId() : prompt("Doesn't look like you " +
+        "are on Turk, so you're probably testing. Enter an ID to save your data with:", "id");
+        var workerID=GetWorkerId();
+        
+
+        function sendData(event, timestamp){
+            var dataToServer = {
+                '#event': event,
+                '$assignmentID': curID,
+                '$workerID': workerID,
+                '$timestamp': (timeStamp/1000),
+                '$userAgent': navigator.userAgent,
+            }
+            
+            allLogs = allLogs.concat(" " + event + " @" + (timestamp/1000)+ ",");
+            try{
+                $.post("https://cis-linux2.temple.edu/~tun94111/turk/save.php?hitId=" + String(GetAssignmentId()),
+                    dataToServer
+                );
+                                    	
+			}catch(err){
+				errLogs = errLog.concat(" Jquery post failed @" + String(timeStamp/1000));
+			}
+        }
+                        
+                    
+                        
+    document.getElementById('targetOne').addEventListener('click', function(){
+                var currTime = new Date().getTime();
+                timeStamp = currTime - startTime;
+                
+                timeToDecide = timeStamp;
+                
+                document.getElementById("targetOne").style.border = "4px dotted blue";
+                oneVal = 1;
+                if(twoVal != 0){
+                    twoVal = 0;
+                    document.getElementById("targetTwo").style.border = "0px solid black";
+                    
+                }
+                sendData("target1 clicked", timeStamp);
+                
+    });
+    document.getElementById('targetTwo').addEventListener('click', function(){
+                var currTime = new Date().getTime();
+                timeStamp = currTime - startTime;
+                timeToDecide = timeStamp;
+                document.getElementById("targetTwo").style.border = "4px dotted blue";
+                twoVal = 1;
+                if(oneVal != 0){
+                    oneVal = 0;
+                    document.getElementById("targetOne").style.border = "0px solid black";
+                    
+                }
+                sendData("target2 clicked", timeStamp);
+    });
+    document.getElementById('targetex1').addEventListener('click', function(){
+                var currTime = new Date().getTime();
+                timeStamp = currTime - startTime;
+                document.getElementById("targetex1").style.border = "4px dotted blue";
+                oneEx = 1;
+                if(twoEx != 0){
+                    twoEx = 0;
+                    document.getElementById("targetex2").style.border = "0px solid black";
+                    
+                }
+                att1.value = "true";
+                att2.value = "false";
+                sendData("Attention Image 1 clicked", timeStamp);
+    });
+    document.getElementById('targetex2').addEventListener('click', function(){
+                var currTime = new Date().getTime();
+                timeStamp = currTime - startTime;
+                document.getElementById("targetex2").style.border = "4px dotted blue";
+                twoEx = 1;
+                if(oneEx != 0){
+                    oneEx = 0;
+                    document.getElementById("targetex1").style.border = "0px solid black";
+                }
+                att2.value = "true";
+                att1.value = "false";
+                sendData("Attention Image 2 clicked", timeStamp);
+    });
+    
+    document.addEventListener("visibilitychange", function() {
+        if(mainStarted == 1){
+                var currTime = new Date().getTime();
+                timeStamp = currTime - startTime;
+                let type = "";
+                if(document.visibilityState === 'visible'){
+                    type = "visibilitytovisible";
+                    timeHidden += (currTime - startHide);
+                }
+                else{
+                    type = "visibilitytohidden";
+                    startHide = currTime;
+                }
+                sendData(type, timeStamp)
+        }
+    });
+    document.getElementById('sub').addEventListener('click', (event) => {
+                var currTime = new Date().getTime();
+                timeStamp = currTime - startTime;
+                const one = document.getElementById("oneClicked");
+                const two = document.getElementById("twoClicked");
+                if(oneVal == 1){
+                    one.value = "true"
+                    two.value = "false"
+                }
+                else if(twoVal == 1){
+                    two.value = "true"
+                    one.value = "false"
+                }
+                var time = document.getElementById("taskTime");
+                const log = document.getElementById("log");
+                const errLog = document.getElementById("errlog");
+                var timeHid = document.getElementById("hiddenTime");
+                
+                log.value = allLogs;
+                errLog.value = errLogs;
+                time.value = timeToDecide/1000;
+                timeHid.value = timeHidden/1000;
+                
+                
+                sendData("submit clicked", timeStamp);
+    });
+    
+    
+
+    
+});
+  //end on load
+</script>
+    
