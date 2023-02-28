@@ -3,19 +3,20 @@ header("Access-Control-Allow-Origin: *");
 
 
 if(isset($_POST)){
-      
-	$id = $_POST['hitid'];
-	$myfile = fopen(strval($id) . '.txt', 'a');
+	$myfile = fopen('agecomparisonlogging.txt', 'a');
 	
         if (false === $myfile) {
 		print "FOPEN NOT WORKING<br>";
 	}
-	
-	fwrite($myfile, json_encode($_POST) . PHP_EOL);
+	$myLine = implode(",", $_POST['dataArray']);
+	$temp = str_replace("[", "", $myLine);
+	$toWrite = str_replace("]", "", $temp);
+	fwrite($myfile, $toWrite . PHP_EOL);
 	fclose($myfile);
 }
  
  
 
 ?>
+
 
